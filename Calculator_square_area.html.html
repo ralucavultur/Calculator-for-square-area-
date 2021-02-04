@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Calculator</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		
+	</style>
+</head>
+
+<body>
+
+	<h1>Calculator for square area</h1>
+	<p>The area of a square is given by the formula:
+		<br>
+		area	=	width	×	height 
+		<br>
+		But since the width and height are by definition the same, the formula is usually written as:
+		<br>
+		<b>Area	= s<sup>2</sup> </b> 
+		<br>
+		where "s" is the length of one side.</p>
+	<br>
+
+
+	<label for="textInput">Please type the value of square side:</label>
+	<input type="text" id="textInput">
+
+
+	<button id="button1">Calculate</button>
+
+	<p id="someParagraph"></p>
+
+	
+
+	<script type="text/javascript">
+
+		var side ="";
+
+		var calculateSquareArea= new Function("side", "return side*side");	
+			
+
+		function EmptyTheParagraph(){
+			document.getElementById("someParagraph").innerHTML= "";
+		}	
+
+		document.getElementById("button1").onclick = function(){
+			side = document.getElementById("textInput").value;
+
+			if(side < 0){
+				EmptyTheParagraph();
+				setTimeout(function(){alert("Side cannot be a negative number"); },200);
+				
+			}
+			else if(isNaN(side)){  
+				EmptyTheParagraph();
+				setTimeout(function(){alert("You have typed an incorrect value, please try again"); },200);
+				
+			}
+			else if(side == ""){
+				EmptyTheParagraph();
+				setTimeout(function(){alert("Please enter a value for the square side"); },200);
+			}
+			else{
+				var area = calculateSquareArea(side);
+				document.getElementById("someParagraph").innerHTML= "Area is: " + area;	
+			}
+
+		};
+
+
+	</script>
+
+</body>
+
+</html>
